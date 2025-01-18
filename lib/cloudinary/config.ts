@@ -13,7 +13,7 @@ export const uploadToCloudinary = async (
   const res = await cloudinary.uploader.upload(fileUri, {
     invalidate: true,
     resource_type: "image",
-    folder: "pragati/" + folderName,
+    folder: "Skillable/" + folderName,
     use_filename: true,
   });
 

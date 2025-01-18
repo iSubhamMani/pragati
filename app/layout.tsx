@@ -11,7 +11,7 @@ const font = Quicksand({
 });
 
 export const metadata: Metadata = {
-  title: "Pragati",
+  title: "Skillable",
   description: "Empowering the sustainable development of the world.",
 };
 

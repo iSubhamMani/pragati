@@ -20,7 +20,7 @@ export default function Home() {
           <div className="flex items-center gap-2">
             <Image src={"/logo.png"} width={32} height={32} alt="logo" />
             <span className="font-bold text-2xl md:text-3xl text-primary">
-              Pragati
+              Skillable
             </span>
           </div>
         </Link>
@@ -47,7 +47,7 @@ export default function Home() {
         </section>
         <section className="py-10 mx-4 bg-primary/10 rounded-md shadow-sm">
           <h1 className="fade-pullup-delayed-2 text-2xl font-bold text-secondary-foreground text-center">
-            Why <span className="text-primary">Pragati?</span>
+            Why <span className="text-primary">Skillable?</span>
           </h1>
           <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
             <div>
