@@ -1,4 +1,5 @@
 import FeaturedCourses from "@/components/FeaturedCourses";
+import Notification from "@/components/Notification";
 import ShinyHeading from "@/components/ShinyHeading";
 import { MoveRight } from "lucide-react";
 import Image from "next/image";
@@ -6,6 +7,7 @@ import Image from "next/image";
 const Home = () => {
   return (
     <main className="flex-1 space-y-8">
+      <Notification />
       <section className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-12">
         <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-12">
           <div className="lg:flex-1">

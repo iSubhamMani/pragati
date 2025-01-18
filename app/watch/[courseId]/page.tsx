@@ -9,6 +9,7 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { CheckCircle, MoveLeft, PlayCircle } from "lucide-react";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
+import Notification from "@/components/Notification";
 
 async function fetchCourseData(courseId: string) {
   try {
@@ -86,6 +87,7 @@ const WatchLayout = async ({
 
   return (
     <div className="min-h-screen bg-background bg-[radial-gradient(ellipse_90%_90%_at_50%_-20%,rgba(125,210,94,0.3),rgba(255,255,255,0))]">
+      <Notification />
       <div className="container mx-auto py-6 px-4">
         <div className="w-max my-6">
           <Link href={"/purchases"}>
