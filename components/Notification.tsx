@@ -39,7 +39,7 @@ const Notification = () => {
     }
     setInterval(() => {
       pushNotification();
-    }, 60000 * 60 * 2);
+    }, 1000 * 60 *2);  
   }, []);
 
   return null;
