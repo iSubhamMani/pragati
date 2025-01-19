@@ -1,8 +1,7 @@
 import { getServerSession } from "next-auth";
-import { authOptions } from "../auth/[...nextauth]/config";
-import { handleError } from "@/utils/handleError";
-import { BadRequestError, UnauthorizedError } from "@/utils/Error";
 import { NextRequest, NextResponse } from "next/server";
+import { authOptions } from "../../auth/[...nextauth]/config";
+import { BadRequestError, UnauthorizedError } from "@/utils/Error";
 import {
   collection,
   getDocs,
@@ -11,7 +10,7 @@ import {
   where,
 } from "firebase/firestore";
 import { db } from "@/lib/firebase/config";
-import { PurchasedCourse } from "@/lib/models/PurchasedCourse";
+import { handleError } from "@/utils/handleError";
 
 export async function PATCH(req: NextRequest) {
   try {
@@ -21,16 +20,17 @@ export async function PATCH(req: NextRequest) {
       throw new UnauthorizedError();
     }
 
-    const { courseId, sid } = await req.json();
+    const { courseId } = await req.json();
 
-    if (!courseId || !sid) {
+    if (!courseId) {
       throw new BadRequestError();
     }
 
     const purchasedCourseQuery = query(
       collection(db, "purchasedCourses"),
       where("id", "==", courseId),
-      where("purchasedBy", "==", session.user.email)
+      where("purchasedBy", "==", session.user.email),
+      where("isCompleted", "==", true)
     );
     const purchasedCourse = await getDocs(purchasedCourseQuery);
 
@@ -38,25 +38,14 @@ export async function PATCH(req: NextRequest) {
       throw new UnauthorizedError();
     }
 
-    // Update progress
-    const courseData = purchasedCourse.docs[0].data() as PurchasedCourse;
-    const updatedVideoSections = courseData.videoSections.map((section) =>
-      section.id === sid ? { ...section, isCompleted: true } : section
-    );
-
-    const isCompleted = updatedVideoSections.every(
-      (section) => section.isCompleted
-    );
-
     const courseRef = purchasedCourse.docs[0].ref;
     // Update the document in Firestore
     await updateDoc(courseRef, {
-      videoSections: updatedVideoSections,
-      isCompleted,
+      isQuizAttempted: true,
     });
 
     return NextResponse.json(
-      { message: "Progress updated", success: true, isCompleted: isCompleted },
+      { message: "Quiz Progress updated", success: true },
       { status: 200 }
     );
   } catch (error) {

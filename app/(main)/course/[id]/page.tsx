@@ -10,7 +10,7 @@ import { Separator } from "@/components/ui/separator";
 import { db } from "@/lib/firebase/config";
 import { Course } from "@/lib/models/Course";
 import { doc, getDoc } from "firebase/firestore";
-import { PlayCircle, DollarSign } from "lucide-react";
+import { PlayCircle } from "lucide-react";
 import Image from "next/image";
 
 const fetchCourseDetails = async (id: string) => {
@@ -88,8 +88,7 @@ const CourseDetails = async ({
           <Card className="shadow-lg sticky top-8">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <DollarSign className="h-6 w-6" />
-                <span className="text-3xl font-bold">{course.price}</span>
+                <span className="text-3xl font-bold">₹ {course.price}</span>
               </CardTitle>
             </CardHeader>
             <CardContent>

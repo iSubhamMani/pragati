@@ -3,6 +3,7 @@
 
 import { useEffect, useRef } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 declare global {
   interface Window {
@@ -79,10 +80,20 @@ const VideoPlayer = ({
     if (event.data === window.YT.PlayerState.ENDED) {
       try {
         // Use the current value from the ref instead of the closed-over sid
-        await axios.patch("/api/progress", {
+        const res = await axios.patch("/api/progress", {
           courseId,
           sid: currentSidRef.current,
         });
+
+        if (res.data.success && res.data.isCompleted) {
+          toast.success(
+            "🎉 Course completed! 🎉 Go back and attend the Quiz to get your certificate",
+            {
+              duration: 5000,
+              position: "bottom-right",
+            }
+          );
+        }
       } catch (error) {
         console.log(error);
       }

@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { PurchasedCourse } from "@/lib/models/PurchasedCourse";
 import { GrCertificate } from "react-icons/gr";
+import { CircleHelp } from "lucide-react";
 
 const PurchasedCourseCard = (course: PurchasedCourse) => {
   const totalSections = course.videoSections.length;
@@ -15,6 +16,8 @@ const PurchasedCourseCard = (course: PurchasedCourse) => {
   }, 0);
 
   const progress = Math.floor((completedSections / totalSections) * 100);
+  const isCompleted = course.isCompleted;
+  const isQuizAttempted = course.isQuizAttempted;
 
   return (
     <Card className="overflow-hidden fade-pullup-delayed-1">
@@ -68,14 +71,25 @@ const PurchasedCourseCard = (course: PurchasedCourse) => {
           </div>
         </div>
         <div className="flex justify-end items-center mt-4 gap-4">
-          {progress === 100 && (
+          {progress === 100 && isCompleted && !isQuizAttempted && (
+            <Link href={`/quiz/${course.id}`}>
+              <Button
+                className="font-bold flex items-center gap-1"
+                variant={"default"}
+              >
+                <CircleHelp className="size-5" />
+                Attend Quiz
+              </Button>
+            </Link>
+          )}
+          {progress === 100 && isCompleted && isQuizAttempted && (
             <Link href={`/certificate/${course.id}`}>
               <Button
                 className="font-bold flex items-center gap-1"
                 variant={"default"}
               >
                 <GrCertificate className="size-5" />
-                Certificate
+                Get Certificate
               </Button>
             </Link>
           )}

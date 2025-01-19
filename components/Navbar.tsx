@@ -1,11 +1,14 @@
 "use client";
 
+import { VirtualWalletContext } from "@/context/VirtualWallet";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 
 const Navbar = () => {
+  const { balance } = useContext(VirtualWalletContext);
+
   return (
     <nav className="flex justify-between items-center p-6">
       <div>
@@ -18,6 +21,9 @@ const Navbar = () => {
       </div>
       <div>
         <ul className="flex items-center gap-6">
+          <li className="text-lg font-bold text-primary-foreground bg-primary px-4 py-1 rounded-md">
+            Balance: ₹{balance}
+          </li>
           <li>
             <Link
               className="hover:text-primary pb-1 border-b-2 border-primary text-lg font-medium text-secondary-foreground"

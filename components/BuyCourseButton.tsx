@@ -2,15 +2,19 @@
 
 import { buyCourse } from "@/actions/buyCourse";
 import { Button } from "./ui/button";
-import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const BuyCourseButton = ({ courseId }: { courseId: string }) => {
+  const router = useRouter();
+
   async function handleBuyCourse() {
-    const res = await buyCourse(courseId);
-    if (res.success) {
-      toast.success(res.message);
-    } else {
-      toast.error(res.message || "Error purchasing course");
+    try {
+      const res = await buyCourse(courseId);
+      if (res.url) {
+        router.push(res.url);
+      }
+    } catch (error) {
+      console.log(error);
     }
   }
 
