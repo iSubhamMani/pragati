@@ -61,12 +61,18 @@ export async function POST(req: NextRequest) {
       console.error("Error updating purchase status:", error);
     }
 
-    return NextResponse.redirect("http://localhost:3000/payment/success", {
-      status: 301,
-    });
+    return NextResponse.redirect(
+      "https://skillable.vercel.app/payment/success",
+      {
+        status: 301,
+      }
+    );
   } else
-    return NextResponse.redirect("http://localhost:3000/payment/failure", {
-      // a 301 status is required to redirect from a POST to a GET route
-      status: 301,
-    });
+    return NextResponse.redirect(
+      "https://skillable.vercel.app/payment/failure",
+      {
+        // a 301 status is required to redirect from a POST to a GET route
+        status: 301,
+      }
+    );
 }
