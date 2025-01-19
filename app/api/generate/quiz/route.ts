@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
 
     const prompt = `
           
-          Please generate a quiz (10 questions) based on the course which has the title: ${courseTitle} and has the following sections: ${videoSectionTitles}. The output should be structured as given in the example.
+          Please generate a quiz (5 questions) based on the course which has the title: ${courseTitle} and has the following sections: ${videoSectionTitles}. The output should be structured as given in the example.
     
           **Example:**
           

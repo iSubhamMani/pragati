@@ -91,7 +91,7 @@ const QuizComponent = ({
     setIncorrectAnswers(incorrect_answers);
     setUnanswered(unanswered);
 
-    if (unanswered === 10) {
+    if (unanswered === 5) {
       toast("You didn't answer any question", {
         icon: "🤔",
         duration: 3000,
@@ -103,9 +103,9 @@ const QuizComponent = ({
       return;
     }
 
-    if (correct_answers <= 5) {
+    if (correct_answers <= 1) {
       toast(
-        "You need to answer at least 6 questions correctly to earn your certificate",
+        "You need to answer at least 2 questions correctly to earn your certificate",
         {
           icon: "📜",
           duration: 5000,
