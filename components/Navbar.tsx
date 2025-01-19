@@ -22,7 +22,7 @@ const Navbar = () => {
       <div>
         <ul className="flex items-center gap-6">
           <li className="text-lg font-bold text-primary-foreground bg-primary px-4 py-1 rounded-md">
-            Balance: ₹{balance}
+            Balance: ${balance}
           </li>
           <li>
             <Link

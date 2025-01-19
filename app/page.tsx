@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import LoginButton from "@/components/LoginButton";
+import { Button } from "@/components/ui/button";
 import DotPattern from "@/components/ui/dot-pattern";
 import Meteors from "@/components/ui/meteors";
 import { cn } from "@/lib/utils";
@@ -41,7 +42,14 @@ export default function Home() {
                   Tomorrow
                 </p>
               </div>
-              <LoginButton />
+              <div className="flex items-center gap-6">
+                <LoginButton />
+                <Link href={"https://t.me/TJP_WEB3_BOT"} target="_blank">
+                  <Button className="font-bold text-primary-foreground">
+                    Use Telegram Bot
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </section>

@@ -26,7 +26,7 @@ const CourseCard = (course: Course) => {
         <div className="mt-4 space-y-4">
           <div>
             <span className="font-bold text-lg text-secondary-foreground">
-              ₹{course.price}
+              ${course.price}
             </span>
           </div>
           <div className="flex gap-1 items-center">

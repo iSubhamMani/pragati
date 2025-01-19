@@ -88,7 +88,7 @@ const CourseDetails = async ({
           <Card className="shadow-lg sticky top-8">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <span className="text-3xl font-bold">₹ {course.price}</span>
+                <span className="text-3xl font-bold">$ {course.price}</span>
               </CardTitle>
             </CardHeader>
             <CardContent>
