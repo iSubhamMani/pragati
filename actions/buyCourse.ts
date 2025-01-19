@@ -53,9 +53,9 @@ export async function buyCourse(courseId: string) {
     merchantTransactionId: transactionId,
     merchantUserId: "MUID-" + Date.now(),
     amount: (parseInt(courseDetails.price) * 100).toString(),
-    redirectUrl: `https://skillable.vercel.app/api/status/${transactionId}`,
+    redirectUrl: `http://localhost:3000/api/status/${transactionId}`,
     redirectMode: "POST",
-    callbackUrl: `https://skillable.vercel.app/api/status/${transactionId}`,
+    callbackUrl: `http://localhost:3000/api/status/${transactionId}`,
     mobileNumber: "1234567890",
     paymentInstrument: {
       type: "PAY_PAGE",
